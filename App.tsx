@@ -1,4 +1,5 @@
 import AppLoading from 'expo-app-loading';
+import { StatusBar } from 'react-native';
 import {
 	useFonts,
 	Inter_400Regular,
@@ -25,5 +26,14 @@ export default function App() {
 		return <AppLoading />;
 	}
 
-	return <Home />;
+	return (
+		<>
+			<StatusBar
+				barStyle="light-content"
+				translucent
+				backgroundColor="transparent"
+			/>
+			<Home />
+		</>
+	);
 }
