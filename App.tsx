@@ -1,5 +1,4 @@
 import AppLoading from 'expo-app-loading';
-import { StatusBar } from 'react-native';
 import {
 	useFonts,
 	Inter_400Regular,
@@ -12,6 +11,7 @@ import {
 } from '@expo-google-fonts/archivo';
 
 import { Home } from './src/pages/Home';
+import { CarDetails } from './src/pages/CarDetails';
 
 export default function App() {
 	const [fontsLoaded] = useFonts({
@@ -26,14 +26,5 @@ export default function App() {
 		return <AppLoading />;
 	}
 
-	return (
-		<>
-			<StatusBar
-				barStyle="light-content"
-				translucent
-				backgroundColor="transparent"
-			/>
-			<Home />
-		</>
-	);
+	return <CarDetails />;
 }

@@ -1,4 +1,4 @@
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, StatusBar } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import tw from '../../lib/tailwind';
 
@@ -9,6 +9,12 @@ import { Car } from '../../components/Car';
 export function Home() {
 	return (
 		<View style={tw`flex-1 bg-bg_primary`}>
+			<StatusBar
+				barStyle="light-content"
+				translucent
+				backgroundColor="transparent"
+			/>
+
 			<View style={tw`w-full h-28 bg-header justify-end px-6 pb-8`}>
 				<View style={tw`flex-row justify-between items-center`}>
 					<Logo width={RFValue(108)} height={RFValue(12)} />
@@ -28,6 +34,7 @@ export function Home() {
 					<Car
 						brand="Audi"
 						name="RS 5 Coupé"
+						type="eletric"
 						rent={{
 							period: 'Ao dia',
 							price: 120,
