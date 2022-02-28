@@ -16,7 +16,7 @@ export function Button({ title, color, ...rest }: ButtonProps) {
 				color && `bg-[${color}]`
 			}`}
 		>
-			<Text style={tw`font-primary_500 text-base text-shape`}>{title}</Text>
+			<Text style={tw`font-primary_500 text-base text-white`}>{title}</Text>
 		</RectButton>
 	);
 }

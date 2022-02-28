@@ -12,6 +12,9 @@ import {
 
 import { Home } from './src/pages/Home';
 import { CarDetails } from './src/pages/CarDetails';
+import { Scheduling } from './src/pages/Scheduling';
+import { SchedulingDetails } from './src/pages/SchedulingDetails';
+import { SchedulingComplete } from './src/pages/SchedulingComplete';
 
 export default function App() {
 	const [fontsLoaded] = useFonts({
@@ -26,5 +29,5 @@ export default function App() {
 		return <AppLoading />;
 	}
 
-	return <CarDetails />;
+	return <SchedulingComplete />;
 }

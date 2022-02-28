@@ -3,6 +3,8 @@ import {
 	getBottomSpace,
 	getStatusBarHeight,
 } from 'react-native-iphone-x-helper';
+import { Feather } from '@expo/vector-icons';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 import tw from '../../lib/tailwind';
 
@@ -17,9 +19,11 @@ import { ImageSlider } from '../../components/ImageSlider';
 import { Acessory } from '../../components/Acessory';
 import { Button } from '../../components/Button';
 
-interface CarDetailsProps {}
+import { theme } from '../../../tailwind.config';
 
-export function CarDetails({}: CarDetailsProps) {
+interface SchedulingDetailsProps {}
+
+export function SchedulingDetails({}: SchedulingDetailsProps) {
 	return (
 		<View style={tw`flex-1 bg-bg_secondary`}>
 			<StatusBar
@@ -37,7 +41,7 @@ export function CarDetails({}: CarDetailsProps) {
 			</View>
 
 			<ScrollView
-				contentContainerStyle={tw`p-6 items-center`}
+				contentContainerStyle={tw`p-6`}
 				showsVerticalScrollIndicator={false}
 			>
 				<View style={tw`w-full flex-row justify-between items-center`}>
@@ -75,13 +79,61 @@ export function CarDetails({}: CarDetailsProps) {
 					<Acessory name="2 pessoas" icon={PeopleSvg} style={tw`mr-0`} />
 				</View>
 
-				<Text
-					style={tw`font-primary_400 text-text text-base text-justify mt-4`}
+				<View
+					style={tw`w-full flex-row justify-between items-center mt-10 border-b border-b-line pb-4`}
 				>
-					Este é automóvel desportivo. Surgiu do lendário touro de lide
-					indultado na praça Real Maestranza de Sevilla. É um belíssimo carro
-					para quem gosta de acelerar.
-				</Text>
+					<View style={tw`h-12 w-12 justify-center items-center bg-main`}>
+						<Feather
+							name="calendar"
+							size={RFValue(24)}
+							color={theme.colors.white}
+						/>
+					</View>
+
+					<View>
+						<Text
+							style={tw`font-secondary_500 text-xs text-text_detail uppercase`}
+						>
+							De
+						</Text>
+						<Text style={tw`font-primary_500 text-base text-title`}>
+							10/02/2022
+						</Text>
+					</View>
+
+					<Feather
+						name="chevron-right"
+						size={RFValue(12)}
+						color={theme.colors.text}
+					/>
+
+					<View>
+						<Text
+							style={tw`font-secondary_500 text-xs text-text_detail uppercase`}
+						>
+							Até
+						</Text>
+						<Text style={tw`font-primary_500 text-base text-title`}>
+							16/02/2022
+						</Text>
+					</View>
+				</View>
+
+				<View style={tw`w-full mt-4`}>
+					<Text
+						style={tw`font-secondary_500 text-text_detail text-xs uppercase`}
+					>
+						Total
+					</Text>
+					<View style={tw`w-full flex-row justify-between`}>
+						<Text style={tw`font-primary_500 text-base text-title`}>
+							R$ 580 x 3 diárias
+						</Text>
+						<Text style={tw`font-secondary_500 text-2xl text-success`}>
+							R$ 2.900
+						</Text>
+					</View>
+				</View>
 			</ScrollView>
 
 			<View
@@ -89,7 +141,7 @@ export function CarDetails({}: CarDetailsProps) {
 					getBottomSpace() + 24
 				}px] bg-bg_primary`}
 			>
-				<Button title="Escolher período do aluguel" />
+				<Button title="Alugar agora" color={theme.colors.success} />
 			</View>
 		</View>
 	);
