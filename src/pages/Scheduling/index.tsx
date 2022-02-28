@@ -1,5 +1,6 @@
 import { View, Text, ScrollView, StatusBar } from 'react-native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+import { useNavigation } from '@react-navigation/native';
 
 import { theme } from '../../../tailwind.config';
 import tw from '../../lib/tailwind';
@@ -13,8 +14,18 @@ import { Calendar } from '../../components/Calendar';
 interface SchedulingProps {}
 
 export function Scheduling({}: SchedulingProps) {
+	const navigation = useNavigation();
+
 	const selectedDateOne = true;
 	const selectedDateTwo = false;
+
+	function handleConfirmDate() {
+		navigation.navigate('SchedulingDetails');
+	}
+
+	function handleBack() {
+		navigation.goBack();
+	}
 
 	return (
 		<View style={tw`flex-1 bg-bg_secondary`}>
@@ -29,7 +40,11 @@ export function Scheduling({}: SchedulingProps) {
 					getStatusBarHeight() + 16
 				}px]`}
 			>
-				<BackButton color={theme.colors.shape} style={tw`self-start`} />
+				<BackButton
+					color={theme.colors.shape}
+					style={tw`self-start`}
+					onPress={handleBack}
+				/>
 
 				<Text style={tw`font-secondary_600 text-4xl text-white mt-10`}>
 					Escolha uma {'\n'}
@@ -75,7 +90,7 @@ export function Scheduling({}: SchedulingProps) {
 			</ScrollView>
 
 			<View style={tw`p-6`}>
-				<Button title="Confirmar" />
+				<Button title="Confirmar" onPress={handleConfirmDate} />
 			</View>
 		</View>
 	);

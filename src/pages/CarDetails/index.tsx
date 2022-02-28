@@ -3,6 +3,7 @@ import {
 	getBottomSpace,
 	getStatusBarHeight,
 } from 'react-native-iphone-x-helper';
+import { useNavigation } from '@react-navigation/native';
 
 import tw from '../../lib/tailwind';
 
@@ -20,6 +21,16 @@ import { Button } from '../../components/Button';
 interface CarDetailsProps {}
 
 export function CarDetails({}: CarDetailsProps) {
+	const navigation = useNavigation();
+
+	function handleChooseDate() {
+		navigation.navigate('Scheduling');
+	}
+
+	function handleBack() {
+		navigation.goBack();
+	}
+
 	return (
 		<View style={tw`flex-1 bg-bg_secondary`}>
 			<StatusBar
@@ -33,6 +44,7 @@ export function CarDetails({}: CarDetailsProps) {
 					imagesUrl={[
 						'https://freepngimg.com/thumb/audi/35227-5-audi-rs5-red.png',
 					]}
+					onPressButtonBack={handleBack}
 				/>
 			</View>
 
@@ -89,7 +101,10 @@ export function CarDetails({}: CarDetailsProps) {
 					getBottomSpace() + 24
 				}px] bg-bg_primary`}
 			>
-				<Button title="Escolher período do aluguel" />
+				<Button
+					title="Escolher período do aluguel"
+					onPress={handleChooseDate}
+				/>
 			</View>
 		</View>
 	);

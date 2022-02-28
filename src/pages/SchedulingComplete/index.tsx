@@ -1,5 +1,6 @@
 import { View, Text, useWindowDimensions, StatusBar } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 import tw from '../../lib/tailwind';
 
@@ -7,7 +8,12 @@ import LogoSvg from '../../assets/logo_background_gray.svg';
 import DoneSvg from '../../assets/done.svg';
 
 export function SchedulingComplete() {
+	const navigation = useNavigation();
 	const { width } = useWindowDimensions();
+
+	function handleAccept() {
+		navigation.navigate('Home');
+	}
 
 	return (
 		<View style={tw`flex-1 bg-header pt-24`}>
@@ -34,7 +40,7 @@ export function SchedulingComplete() {
 				</Text>
 
 				<RectButton
-					onPress={() => {}}
+					onPress={handleAccept}
 					style={tw`w-20 h-14 justify-center items-center bg-shape_dark mt-20`}
 				>
 					<Text style={tw`font-primary_500 text-base text-white uppercase`}>

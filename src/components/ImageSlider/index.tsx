@@ -4,13 +4,17 @@ import { BackButton } from '../BackButton';
 
 interface ImageSliderProps {
 	imagesUrl: string[];
+	onPressButtonBack?: () => void;
 }
 
-export function ImageSlider({ imagesUrl }: ImageSliderProps) {
+export function ImageSlider({
+	imagesUrl,
+	onPressButtonBack,
+}: ImageSliderProps) {
 	return (
 		<View style={tw`w-full`}>
 			<View style={tw`flex-row justify-between items-center px-6`}>
-				<BackButton onPress={() => {}} />
+				<BackButton onPress={onPressButtonBack} />
 
 				<View style={tw`flex-row`}>
 					<View style={tw`w-[6px] h-[6px] ml-2 rounded bg-title`} />

@@ -20,10 +20,21 @@ import { Acessory } from '../../components/Acessory';
 import { Button } from '../../components/Button';
 
 import { theme } from '../../../tailwind.config';
+import { useNavigation } from '@react-navigation/native';
 
 interface SchedulingDetailsProps {}
 
 export function SchedulingDetails({}: SchedulingDetailsProps) {
+	const navigation = useNavigation();
+
+	function handleRent() {
+		navigation.navigate('SchedulingComplete');
+	}
+
+	function handleBack() {
+		navigation.goBack();
+	}
+
 	return (
 		<View style={tw`flex-1 bg-bg_secondary`}>
 			<StatusBar
@@ -37,6 +48,7 @@ export function SchedulingDetails({}: SchedulingDetailsProps) {
 					imagesUrl={[
 						'https://freepngimg.com/thumb/audi/35227-5-audi-rs5-red.png',
 					]}
+					onPressButtonBack={handleBack}
 				/>
 			</View>
 
@@ -141,7 +153,11 @@ export function SchedulingDetails({}: SchedulingDetailsProps) {
 					getBottomSpace() + 24
 				}px] bg-bg_primary`}
 			>
-				<Button title="Alugar agora" color={theme.colors.success} />
+				<Button
+					title="Alugar agora"
+					color={theme.colors.success}
+					onPress={handleRent}
+				/>
 			</View>
 		</View>
 	);

@@ -1,8 +1,9 @@
 import { View, Text, Image } from 'react-native';
-import tw from '../../lib/tailwind';
+import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
 import { Feather, SimpleLineIcons } from '@expo/vector-icons';
+import tw from '../../lib/tailwind';
 
-interface CarProps {
+interface CarProps extends RectButtonProps {
 	brand: string;
 	name: string;
 	type: 'gasoline' | 'eletric';
@@ -13,9 +14,10 @@ interface CarProps {
 	thumbnail: string;
 }
 
-export function Car({ brand, name, type, rent, thumbnail }: CarProps) {
+export function Car({ brand, name, type, rent, thumbnail, ...rest }: CarProps) {
 	return (
-		<View
+		<RectButton
+			{...rest}
 			style={tw`w-full h-32 bg-bg_secondary flex-row justify-between items-center p-6 mb-4`}
 		>
 			<View>
@@ -53,6 +55,6 @@ export function Car({ brand, name, type, rent, thumbnail }: CarProps) {
 				resizeMode="contain"
 				style={tw`h-[85px] w-[167px]`}
 			/>
-		</View>
+		</RectButton>
 	);
 }
